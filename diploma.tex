@@ -1,0 +1,50 @@
+\documentclass[a4paper,14pt]{extarticle}
+%\documentclass[a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathtext}
+\usepackage{cite}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage[top=1.5cm,bottom=1.5cm,left=2.5cm,right=1.5cm]{geometry}
+\usepackage[unicode]{hyperref}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[format=hang, labelsep=period, margin=8pt, figurename=Рис.]{caption}
+\usepackage{listings}
+\usepackage{subcaption}
+%\usepackage{showkeys}
+\usepackage[onehalfspacing, nodisplayskipstretch]{setspace}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\numberwithin{equation}{section}
+\setcounter{secnumdepth}{3} % глубина нумеруемых разделов
+\setcounter{tocdepth}{3} % глубина оглавления
+
+\begin{document}
+%\listoftodos
+%\clearpage
+\newpage
+\input{title}
+\setcounter{page}{2}
+\tableofcontents
+\clearpage
+\newpage
+\input{preamble}
+\clearpage
+\newpage
+\input{models}
+
+\clearpage
+\newpage
+\input{biblio}
+\end{document}
