@@ -26,10 +26,11 @@
 	которые называются \textit{законами движения} материальных точек скелета и флюида.
 	
 	Возмём дифференциал от \eqref{motion_law}:
-\begin{equation}
+\begin{align}
 	\label{gradient}
-	d\mathbf{x} = d\mathbf{X}_A \cdot \left(\nabla_{\kappa} \otimes \mathbf{x} \right) = d\mathbf{X} \cdot \mathbf{F}_A^T = \mathbf{F}_A \cdot d\mathbf{X},
-\end{equation}
+	d\mathbf{x} = d\mathbf{X}_A \cdot \left(\nabla_{\kappa} \otimes \mathbf{x} \right) &= d\mathbf{X} \cdot \mathbf{F}_A^T = \mathbf{F}_A \cdot d\mathbf{X},\nonumber\\
+	\mathbf{F}_A(\mathbf{X}, t) &= \left[\nabla_{\kappa} \otimes \mathbf{x}(\mathbf{X}_A, t)\right]^T,
+\end{align}
 	где $\mathbf{F}_A$ -- тензор второго ранга, называемый \textit{градиентом деформации (дисторсией)} континуума A.
 	
 	Для градиента деформаций $\textbf{F}_A$ справедлива \textit{теорема Коши о полярном разложении}, которая позволяет представить деформацию элемента $d\mathbf{X}_A$ как комбинацию растяжения (сжатия) и вращения как жесткого целого:
@@ -40,6 +41,13 @@
 	где $\mathbf{R}_A$ -- ортогональный тензор второго ранга, называемый \textit{тензором поворота},
 	$\mathbf{U}_A, \mathbf{V}_A$ -- симметричные положительной определённые тензоры второго ранга, называемые \textit{правым и левым тензорами растяжения}. Разложение \eqref{coushy_th} единственно.
 	
+	Частной производной закона движения \eqref{motion_law} по времени является \textit{вектор скорости материальной точки}:
+\begin{equation}
+	\label{velocity}
+	\mathbf{v}_A(\mathbf{X}_A, t) \equiv \dot{\mathbf{x}}(\mathbf{X}_A, t) = \left.\frac{\partial\mathbf{x}(\mathbf{X}, t)}{\partial t}\right|_{\mathbf{X}_A}.
+\end{equation}
+	Здесь и далее точкой будем обозначать \textit{материальную производную по времени} (при постоянном $\mathbf{X}_A$).
+	
 	Описание характристик материальной точки функциями от $\mathbf{X}_A$ носит название \textit{материального} или \textit{лагранжевого описания среды}, а радиус-вектор $\textbf{X}_A$ носит название \textit{материальной} или \textit{лагранжевой переменной}. Если же характеристики представляются функциями $\mathbf{x}$, то такой подход называется \textit{пространственным} или \textit{эйлеровым описанием среды}, переменная $\mathbf{x}$ -- \textit{пространственной} или \textit{эйлеровой переменной}.
 
 \subsection{Тезоры деформаций. Уравнение совместности скоростей и деформаций.}
@@ -47,7 +55,27 @@
 \begin{align}
 	\label{strain_measures}
 	\mathbf{E}_A &= \frac{1}{2}\left(\mathbf{F}_A^T \cdot \mathbf{F}_A - \mathbf{I}\right)\\
-	\mathbf{A}_A &= \frac{1}{2}\left(\mathbf{I} - \mathbf{F}_A^{-1T} \cdot \mathbf{F}_A^{-1}\right)
+	\mathbf{A}_A &= \frac{1}{2}\left(\mathbf{I} - \mathbf{F}_A^{-1T} \cdot \mathbf{F}_A^{-1}\right).
 \end{align}
 
-\subsection{Закон сохранения масс.}
+	Представляя градиент деформаций \eqref{gradient} через вектор перемещений $\mathbf{u}_A = \mathbf{x}_A - \mathbf{X}_A$, подставляя в \eqref{strain_measures} и пренебрегая членами второго порядка малости, получим \textit{тензор малых деформаций} $\mathbf{e_A}$:
+\begin{equation}
+	\label{small_strains}
+	\mathbf{e}_A = \frac{1}{2}\left(\left(\nabla_{\kappa} \otimes \mathbf{u}\right) + \left(\nabla_{\kappa}\otimes \mathbf{u}\right)^T\right)
+\end{equation}
+
+	Величины $\mathbf{F}_A(\mathbf{X}_A, t)$ и $\mathbf{v}_A(\mathbf{X}_A, t)$ являются первыми производными отображения $\kappa_A \to \chi(t)$. Предполагая отображение \eqref{motion_law} кусочно дважды непрерывно-дифференцируемым, получим соотношение:
+\begin{equation}
+	\label{velocities_strains}
+	\dot{\mathbf{F}}_A = \left(\nabla_{\kappa} \otimes \mathbf{v}_A \right)^T,
+\end{equation}
+	называемое \textit{уравнением совместности скоростей и деформаций}.
+
+\subsection{Пористость. Эффективная и истинная плотности. Закон сохранения масс.}
+
+	Для описания доли пустот в твёрдом скелете используется скалярная величина $\phi(\mathbf{x}, t)$ -- \textit{пористость}, определяемая выражением:
+\begin{equation}
+	\label{porosity}
+	\phi(\mathbf{x}, t) = \frac{1}{V(\mathbf{x}, t)}\int\limits_{V(\mathbf{x})}\tilde{\varphi}(\mathbf{z}, t) dV,
+\end{equation}
+	где интеграл берётся по элементарному объёму $V(\mathbf{x})$, $\tilde{\varphi}(\mathbf{z}, t)$ -- индикаторная функция скелета.
