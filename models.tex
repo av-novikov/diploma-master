@@ -8,9 +8,11 @@
 	Под \textit{флюидом} понимается смесь жидкостей и газов, способная перемещаться внутри порового пространства скелета.
 	Для описания совместного движения скелета и флюида используется \textit{гипотеза суперпозиции континуумов}, которая предполагает что в каждой точке пространства находится и скелет, и флюид. 
 
-	Флюид, в свою очередь, может быть многофазным и многокомпонентным. Здесь и далее будем отождествлять понятие \textit{компоненты} с химическим веществом, входящим в состав флюида. \textit{Фазой} будем называть термодинамически равновесное состояние вещества, качественно отличное от других равновесных состояний того же вещества. Подробное изложение законов сохранения, построение определяющих соотношений для таких систем можно найти в \cite{basniev, fortov, kondaurov, checkalyuk}.
-	Здесь же, для простоты, будем рассматривать флюид состоящий из одной компоненты, которая может находится в двух фазах -- жидкой и газообразной.
+	Флюид, в свою очередь, может быть многофазным и многокомпонентным. Здесь и далее будем отождествлять понятие \textit{компоненты} с химическим веществом, входящим в состав флюида. \textit{Фазой} будем называть термодинамически равновесное состояние вещества, качественно отличное от других равновесных состояний того же вещества. 
+
+	Подробное изложение законов сохранения, построение определяющих соотношений для таких систем можно найти в \cite{basniev, fortov, kondaurov, checkalyuk}. Вопросы динамики многофазных сред описаны в \cite{nigmatulin}.
 	
+	Здесь и далее, для простоты, будем рассматривать флюид, состоящий из двух компонент, которые могут находится в двух фазах (жидкой и газообразной) -- \textit{бинарную смесь}.
 	В данной главе будут представлены законы сохранения, основные определяющие соотношения такой системы. Как результат будут получены математические модели 	процессов массо- и теплопереноса в пористых средах.
 
 \subsection{Кофигурации. Градиент деформации. Подходы Эйлера и Лагранжа описания движения сплошной среды.}
@@ -22,67 +24,67 @@
 	Здесь и далее предполагается, что области $\kappa_A$, $\chi(t)$ -- регулярны, отображения $\kappa_A \to \chi(t)$ -- кусочно-гомеоморфны и дифференцируемы. Тогда существуют взаимнооднозначные дифференцируемые связи:
 \begin{equation}
 	\label{motion_law}
-	\mathbf{x} = \mathbf{x}(\mathbf{X}_A, t), \quad t > 0,\quad \mathbf{x} \in \chi(t), \quad \mathbf{X}_A \in \kappa_A,
+	\boldsymbol{x} = \boldsymbol{x}(\boldsymbol{X}_A, t), \quad t > 0,\quad \boldsymbol{x} \in \chi(t), \quad \boldsymbol{X}_A \in \kappa_A,
 \end{equation}
 	которые называются \textit{законами движения} материальных точек скелета и флюида.
 	
 	Возмём дифференциал от \eqref{motion_law}:
 \begin{align}
 	\label{gradient}
-	d\mathbf{x} = d\mathbf{X}_A \cdot \left(\nabla_{\kappa} \otimes \mathbf{x} \right) &= d\mathbf{X} \cdot \mathbf{F}_A^T = \mathbf{F}_A \cdot d\mathbf{X},\nonumber\\
-	\mathbf{F}_A(\mathbf{X}, t) &= \left[\nabla_{\kappa} \otimes \mathbf{x}(\mathbf{X}_A, t)\right]^T,
+	d\boldsymbol{x} = d\boldsymbol{X}_A \cdot \left(\nabla_{\kappa} \otimes \boldsymbol{x} \right) &= d\boldsymbol{X} \cdot \boldsymbol{F}_A^T = \boldsymbol{F}_A \cdot d\boldsymbol{X},\nonumber\\
+	\boldsymbol{F}_A(\boldsymbol{X}, t) &= \left[\nabla_{\kappa} \otimes \boldsymbol{x}(\boldsymbol{X}_A, t)\right]^T,
 \end{align}
-	где $\mathbf{F}_A$ -- тензор второго ранга, называемый \textit{градиентом деформации (дисторсией)} континуума A.
+	где $\boldsymbol{F}_A$ -- тензор второго ранга, называемый \textit{градиентом деформации (дисторсией)} континуума A.
 	
-	Для градиента деформаций $\textbf{F}_A$ справедлива \textit{теорема Коши о полярном разложении}, которая позволяет представить деформацию элемента $d\mathbf{X}_A$ как комбинацию растяжения (сжатия) и вращения как жесткого целого:
+	Для градиента деформаций $\textbf{F}_A$ справедлива \textit{теорема Коши о полярном разложении}, которая позволяет представить деформацию элемента $d\boldsymbol{X}_A$ как комбинацию растяжения (сжатия) и вращения как жесткого целого:
 \begin{equation}
 	\label{coushy_th}
-	\mathbf{F}_A = \mathbf{R}_A \cdot \mathbf{U}_A = \mathbf{V}_A \cdot \mathbf{R}_A,
+	\boldsymbol{F}_A = \boldsymbol{R}_A \cdot \boldsymbol{U}_A = \boldsymbol{V}_A \cdot \boldsymbol{R}_A,
 \end{equation}
-	где $\mathbf{R}_A$ -- ортогональный тензор второго ранга, называемый \textit{тензором поворота},
-	$\mathbf{U}_A, \mathbf{V}_A$ -- симметричные положительной определённые тензоры второго ранга, называемые \textit{правым и левым тензорами растяжения}. Разложение \eqref{coushy_th} единственно.
+	где $\boldsymbol{R}_A$ -- ортогональный тензор второго ранга, называемый \textit{тензором поворота},
+	$\boldsymbol{U}_A, \boldsymbol{V}_A$ -- симметричные положительной определённые тензоры второго ранга, называемые \textit{правым и левым тензорами растяжения}. Разложение \eqref{coushy_th} единственно.
 	
 	Частной производной закона движения \eqref{motion_law} по времени является \textit{вектор скорости материальной точки}:
 \begin{equation}
 	\label{velocity}
-	\mathbf{v}_A(\mathbf{X}_A, t) \equiv \dot{\mathbf{x}}(\mathbf{X}_A, t) = \left.\frac{\partial\mathbf{x}(\mathbf{X}, t)}{\partial t}\right|_{\mathbf{X}_A}.
+	\boldsymbol{v}_A(\boldsymbol{X}_A, t) \equiv \dot{\boldsymbol{x}}(\boldsymbol{X}_A, t) = \left.\frac{\partial\boldsymbol{x}(\boldsymbol{X}, t)}{\partial t}\right|_{\boldsymbol{X}_A}.
 \end{equation}
-	Здесь и далее точкой будем обозначать \textit{материальную производную по времени} (при постоянном $\mathbf{X}_A$).
+	Здесь и далее точкой будем обозначать \textit{материальную производную по времени} (при постоянном $\boldsymbol{X}_A$).
 	
-	Описание характристик материальной точки функциями от $\mathbf{X}_A$ носит название \textit{материального} или \textit{лагранжевого описания среды}, а радиус-вектор $\textbf{X}_A$ носит название \textit{материальной} или \textit{лагранжевой переменной}. Если же характеристики представляются функциями $\mathbf{x}$, то такой подход называется \textit{пространственным} или \textit{эйлеровым описанием среды}, переменная $\mathbf{x}$ -- \textit{пространственной} или \textit{эйлеровой переменной}.
+	Описание характристик материальной точки функциями от $\boldsymbol{X}_A$ носит название \textit{материального} или \textit{лагранжевого описания среды}, а радиус-вектор $\textbf{X}_A$ носит название \textit{материальной} или \textit{лагранжевой переменной}. Если же характеристики представляются функциями $\boldsymbol{x}$, то такой подход называется \textit{пространственным} или \textit{эйлеровым описанием среды}, переменная $\boldsymbol{x}$ -- \textit{пространственной} или \textit{эйлеровой переменной}.
 
 \subsection{Тезоры деформаций. Уравнение совместности скоростей и деформаций.}
-	Для того чтобы охарактеризовать деформации континуума вводятся специальные меры -- \textit{тензоры конечных деформаций}. Наиболее употребительными являются \textit{тензоры Коши-Грина} $\mathbf{E}_A$ \textit{и Альманзи} $\mathbf{A}_A$:
+	Для того чтобы охарактеризовать деформации континуума вводятся специальные меры -- \textit{тензоры конечных деформаций}. Наиболее употребительными являются \textit{тензоры Коши-Грина} $\boldsymbol{E}_A$ \textit{и Альманзи} $\boldsymbol{A}_A$:
 \begin{align}
 	\label{strain_measures}
-	\mathbf{E}_A &= \frac{1}{2}\left(\mathbf{F}_A^T \cdot \mathbf{F}_A - \mathbf{I}\right)\\
-	\mathbf{A}_A &= \frac{1}{2}\left(\mathbf{I} - \mathbf{F}_A^{-1T} \cdot \mathbf{F}_A^{-1}\right).
+	\boldsymbol{E}_A &= \frac{1}{2}\left(\boldsymbol{F}_A^T \cdot \boldsymbol{F}_A - \boldsymbol{I}\right)\\
+	\boldsymbol{A}_A &= \frac{1}{2}\left(\boldsymbol{I} - \boldsymbol{F}_A^{-1T} \cdot \boldsymbol{F}_A^{-1}\right).
 \end{align}
 
-	Представляя градиент деформаций \eqref{gradient} через вектор перемещений $\mathbf{u}_A = \mathbf{x}_A - \mathbf{X}_A$, подставляя в \eqref{strain_measures} и пренебрегая членами второго порядка малости, получим \textit{тензор малых деформаций} $\mathbf{e_A}$:
+	Представляя градиент деформаций \eqref{gradient} через вектор перемещений $\boldsymbol{u}_A = \boldsymbol{x}_A - \boldsymbol{X}_A$, подставляя в \eqref{strain_measures} и пренебрегая членами второго порядка малости, получим \textit{тензор малых деформаций} $\boldsymbol{e_A}$:
 \begin{equation}
 	\label{small_strains}
-	\mathbf{e}_A = \frac{1}{2}\left(\left(\nabla \otimes \mathbf{u}\right) + \left(\nabla\otimes \mathbf{u}\right)^T\right),
+	\boldsymbol{e}_A = \frac{1}{2}\left(\left(\nabla \otimes \boldsymbol{u}\right) + \left(\nabla\otimes \boldsymbol{u}\right)^T\right),
 \end{equation}
 	где в принятых допущениях: $\nabla_{\kappa} \simeq \nabla$.
 
-	Величины $\mathbf{F}_A(\mathbf{X}_A, t)$ и $\mathbf{v}_A(\mathbf{X}_A, t)$ являются первыми производными отображения $\kappa_A \to \chi(t)$. Предполагая отображение \eqref{motion_law} кусочно дважды непрерывно-дифференцируемым, получим соотношение:
+	Величины $\boldsymbol{F}_A(\boldsymbol{X}_A, t)$ и $\boldsymbol{v}_A(\boldsymbol{X}_A, t)$ являются первыми производными отображения $\kappa_A \to \chi(t)$. Предполагая отображение \eqref{motion_law} кусочно дважды непрерывно-дифференцируемым, получим соотношение:
 \begin{equation}
 	\label{velocities_strains}
-	\dot{\mathbf{F}}_A = \left(\nabla_{\kappa} \otimes \mathbf{v}_A \right)^T,
+	\dot{\boldsymbol{F}}_A = \left(\nabla_{\kappa} \otimes \boldsymbol{v}_A \right)^T,
 \end{equation}
 	называемое \textit{уравнением совместности скоростей и деформаций}.
 
 \subsection{Пористость. Эффективная и истинная плотности. Закон сохранения масс.}
 
-	Для описания доли пустот в твёрдом скелете используется скалярная величина $\phi(\mathbf{x}, t)$ -- \textit{пористость}, определяемая выражением:
+	Для описания доли пустот в твёрдом скелете используется скалярная величина $\phi(\boldsymbol{x}, t)$ -- \textit{пористость}, определяемая выражением:
 \begin{equation}
 	\label{porosity}
-	\phi(\mathbf{x}, t) = \frac{1}{V(\mathbf{x}, t)}\int\limits_{V(\mathbf{x})}\tilde{\varphi}(\mathbf{z}, t) dV,
+	\phi(\boldsymbol{x}, t) = \frac{1}{V(\boldsymbol{x}, t)}\int\limits_{V(\boldsymbol{x})}\tilde{\varphi}(\boldsymbol{z}, t) dV,
 \end{equation}
-	где интеграл берётся по элементарному объёму $V(\mathbf{x})$, $\tilde{\varphi}(\mathbf{z}, t)$ -- индикаторная функция скелета.
+	где интеграл берётся по элементарному объёму $V(\boldsymbol{x})$, $\tilde{\varphi}(\boldsymbol{z}, t)$ -- индикаторная функция скелета.
 
-	Наряду с пористостью введём понятия объёмных долей флюидов в объёме среды $\phi_F$, $\phi_G$. Для них справедливо соотношение: $\phi_F + \phi_G = \phi$.
+	Наряду с пористостью введём понятия \textit{объёмных долей} флюидов в объёме среды $\phi_F$, $\phi_G$. Для них справедливо соотношение: $\phi_F + \phi_G = \phi_S$, где $\phi_S \equiv \phi$.
 	
 	\textit{Насыщенностью} пористой среды флюидом $A$ называется величина:
 \begin{equation}
@@ -94,65 +96,106 @@
 	Масса пористого насыщенного тела $\beta$ равна:
 \begin{align}
 	\label{mass}
-	m(\beta) = \int\limits_{\chi(\beta, t)} \rho(\mathbf{x}, t) dV &= 
-	\int\limits_{\chi(\beta, t)} \rho_F(\mathbf{x}, t) dV + \int\limits_{\chi(\beta, t)}\rho_G(\mathbf{x}, t)dV + \int\limits_{\chi(\beta, t)}\rho_S(\mathbf{x}, t)dV,\\
-	\rho_F(\mathbf{x}, t) &= \phi(\mathbf{x}, t) S(\mathbf{x}, t) \rho_f(\mathbf{x}, t),\\
-	\rho_G(\mathbf{x}, t) &= \phi(\mathbf{x}, t)(1-S(\mathbf{x}, t))\rho_g(\mathbf{x}, t),\\
-	\rho_S(\mathbf{x}, t) &= (1-\phi(\mathbf{x}, t))\rho_s(\mathbf{x}, t),
+	m(\beta) &= \int\limits_{\chi(\beta, t)} \rho(\boldsymbol{x}, t) dV = 
+	\sum\limits_{A=\{F, G, S\}}\int\limits_{\chi(\beta, t)} \rho_A(\boldsymbol{x}, t) dV,\\
+	\rho_A(\boldsymbol{x}, t) &= \phi_A(\boldsymbol{x}, t) \rho_a(\boldsymbol{x}, t), \quad A = \{F, G, S\},
 \end{align}
-	где $\rho(\mathbf{x}, t)$, $\rho_F(\mathbf{x}, t)$, $\rho_G(\mathbf{x}, t)$, $\rho_S(\mathbf{x}, t)$ -- \textit{осреднённые (эффективные) плотности} насыщенной пористой среды, фаз флюида и скелета соответственно,
-	$\rho_f(\mathbf{x}, t)$, $\rho_g(\mathbf{x}, t)$, $\rho_s(\mathbf{x}, t)$ -- \textit{истинные плотности} фаз флюида и скелета.
+	где $\rho(\boldsymbol{x}, t)$, $\rho_A(\boldsymbol{x}, t)$ -- \textit{осреднённые (эффективные) плотности} насыщенной пористой среды и континуума $A$,
+	$\rho_a(\boldsymbol{x}, t)$ -- \textit{истинные плотности} континуума $A$.
 
 	В предположении, что обмен массой между континуумами отсутствует, запишем \textit{локальный закон сохранения массы континуума} $А$ \textit{в форме Лагранжа}:
 \begin{equation}
 	\label{mass_law_l}
-	\rho_{\kappa_A} = \rho_A \left|\det \mathbf{F}_A\right|, \quad A=\{F, G, S\},
+	\rho_{\kappa_A} = \rho_A \left|\det \boldsymbol{F}_A\right|, \quad A=\{F, G, S\},
 \end{equation}
 	где $\rho_{\kappa_A}$, $\rho_A$ -- плотности массы континуума $A$ в отсчётной и актуальной конфигурациях.
 	
 	Взяв материальную производную от интегралов в \eqref{mass}, получим \textit{локальное уравнение баланса массы континуума} $A$ \textit{в форме Эйлера}:
 \begin{equation}
 	\label{mass_law_e}
-	\dot{\rho}_A + \rho_A \nabla \cdot \mathbf{v}_A = 0, \quad A=\{F, G, S\},
+	\dot{\rho}_A + \rho_A \nabla \cdot \boldsymbol{v}_A = 0, \quad A=\{F, G, S\},
 \end{equation}
 	или в дивергентной форме:
 \begin{equation}
 	\label{mass_law_e_div}
-	\left.\frac{\partial \rho_A}{\partial t}\right|_{\mathbf{x}} + \nabla \cdot \left(\rho_A \mathbf{v}_A\right) = 0, \quad A=\{F, G, S\}.
+	\left.\frac{\partial \rho_A}{\partial t}\right|_{\boldsymbol{x}} + \nabla \cdot \left(\rho_A \boldsymbol{v}_A\right) = 0, \quad A=\{F, G, S\}.
 \end{equation}
 	
 	Выражения \eqref{mass_law_l}, \eqref{mass_law_e}, \eqref{mass_law_e_div} справедливы при отсутствии химических (фазовых) превращений. В противном случае необходимо писать в правой части соответствующие интенсивности переходов:
 \begin{equation}
-	\label{mass_law_e_div}
-	\left.\frac{\partial \rho_A}{\partial t}\right|_{\mathbf{x}} + \nabla \cdot \left(\rho_A \mathbf{v}_A\right) = q_A, \quad A=\{F, G, S\}.
+	\label{mass_law_e_div1}
+	\left.\frac{\partial \rho_A}{\partial t}\right|_{\boldsymbol{x}} + \nabla \cdot \left(\rho_A \boldsymbol{v}_A\right) = q_A, \quad A=\{F, G, S\}.
 \end{equation}
 
 \subsection{Напряжения. Законы сохранения импульса и момента импульса.}
 	\textit{Силу}, действующую континуум $A$ в объёме тела $\beta$, представим в виде суммы объёмных массовых сил, объёмных сил взаимодействия континуумов и контактных сил:
 \begin{equation}
 	\label{force_A}
-	\mathbf{f}_A = \mathbf{f}_A^b + \mathbf{f}_A^{int} + \mathbf{f}_A^c = \int\limits_{\chi({\beta}, t)}\rho_A \mathbf{g} dV + \int\limits_{\chi({\beta}, t)}\mathbf{b}_A^{int} dV + \oint\limits_{\partial\chi({\beta}, t)}\mathbf{t}_A dS,
+	\boldsymbol{f}_A = \boldsymbol{f}_A^b + \boldsymbol{f}_A^{int} + \boldsymbol{f}_A^c = \int\limits_{\chi({\beta}, t)}\rho_A \boldsymbol{g}_A dV + \int\limits_{\chi({\beta}, t)}\boldsymbol{b}_A^{int} dV + \oint\limits_{\partial\chi({\beta}, t)}\boldsymbol{t}_A dS,
 \end{equation}
-	где $\mathbf{g}(\mathbf{x}, t)$ -- плотность внешней массовой силы,
-	$\mathbf{b}_A^{int}$ -- плотность сил, действующих на континуум $A$ со стороны остальных континуумов в элементарном объёме,
-	$\mathbf{t}_A$ -- контактная сила, действующая на континуум $A$ из вне области $\chi$ со стороны того же континуума.
+	где $\boldsymbol{g}_A(\boldsymbol{x}, t)$ -- плотность внешней массовой силы,
+	$\boldsymbol{b}_A^{int}$ -- плотность сил, действующих на континуум $A$ со стороны остальных континуумов в элементарном объёме,
+	$\boldsymbol{t}_A$ -- контактная сила, действующая на континуум $A$ из вне области $\chi$ со стороны того же континуума.
 
 	Для объёмных сил взаимодействия предполагатся:
 \begin{equation}
 	\label{force_int}
-	\mathbf{b}_F^{int} + \mathbf{b}_G^{int} + \mathbf{b}_S^{int} = 0.
+	\boldsymbol{b}_F^{int} + \boldsymbol{b}_G^{int} + \boldsymbol{b}_S^{int} = 0.
 \end{equation}
 	
-	Сила $\mathbf{t}_A$ называется \textit{вектором парциальных напряжений} континуума $A$, задаётся на поверхности и является функцией координат и ориентации поверхности(\textit{постулат Коши}): $\mathbf{t}_A = \mathbf{t}_A(\mathbf{x}, \mathbf{n})$. Для вектора $\mathbf{t}_A$ справедлива \textit{фундаметальная теорема Коши}:
+	Сила $\boldsymbol{t}_A$ называется \textit{вектором парциальных напряжений} континуума $A$, задаётся на поверхности и является функцией координат и ориентации поверхности(\textit{постулат Коши}): $\boldsymbol{t}_A = \boldsymbol{t}_A(\boldsymbol{x}, \boldsymbol{n})$. Для вектора $\boldsymbol{t}_A$ справедлива \textit{фундаметальная теорема Коши}:
 \begin{equation}
 	\label{coushy_th}
-	\mathbf{t}_A(\mathbf{x}, \mathbf{n}) = \mathbf{\sigma}_A(\mathbf{x}) \cdot \mathbf{n}, 
+	\boldsymbol{t}_A(\boldsymbol{x}, \boldsymbol{n}) = \boldsymbol{\sigma}_A(\boldsymbol{x}) \cdot \boldsymbol{n}, 
 \end{equation}
-	где тензор $\mathbf{\sigma}_A$ называется \textit{тензором парциальных напряжений Коши} для континуума $A$.
-
-	Учитывая всё выше сказанное, а также \eqref{mass_law_e}, запишем \textit{закон сохранения импульса} для континуума $A$ в виде:
+	где тензор $\boldsymbol{\sigma}_A$ называется \textit{тензором эффективных (парциальных) напряжений Коши} для континуума $A$. Для тензора $\boldsymbol{\sigma}_A$ справедливо выражение:
 \begin{equation}
-	\label{momentum_law}
-	\rho_A\frac{d_A\mathbf{v}_A}{dt} - \nabla \cdot \sigma_A = \rho_A\mathbf{g} + \mathbf{b}_A^{int}
+	\label{stress_tensor}
+	\boldsymbol{\sigma}_A(\boldsymbol{x}, t) = \phi_A(\boldsymbol{x}, t) \boldsymbol{\sigma}_a(\boldsymbol{x}, t),
 \end{equation}
+	где $\boldsymbol{\sigma}_a(\boldsymbol{x}, t)$ -- \textit{тензор истинных напряжений Коши} для континуума $A$.
 
+	Используя \eqref{coushy_th} и теорему Гаусса-Остроградского запишем \textit{законы сохранения импульса и момента импульса} для континуума $A$ в виде:
+\begin{align}
+	\label{momentum_law1}
+	&\int\limits_{\chi(\beta, t)} \left( \frac{\partial (\rho_A \boldsymbol{v}_A)}{\partial t} 
+	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{g}_A - \boldsymbol{b}_A^{int} \right) dV = 0,\\
+	\label{momentum_law2}
+	&\int\limits_{\chi(\beta, t)} \left[ \boldsymbol{r} \times \left( \frac{\partial (\rho_A \boldsymbol{v}_A)}{\partial t} 
+	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{g}_A - \boldsymbol{b}_A^{int} \right) + \boldsymbol{\varepsilon} : \boldsymbol{\sigma}_A \right] dV = 0,
+\end{align}
+	где $\boldsymbol{\varepsilon}$ -- тензор Леви-Чивита. Подставляя \eqref{momentum_law1} в \eqref{momentum_law2} получим:
+\begin{equation}
+	\label{stress_sym}
+	\boldsymbol{\sigma}_A = \boldsymbol{\sigma}_A^T.
+\end{equation}
+	Для выполнения закона сохранения момента импульса \eqref{momentum_law2} необходимо и достаточно выполнения \eqref{stress_sym}.
+	
+	Тогда, используя \eqref{mass_law_e_div1}, запишем закон сохранения для континуума $A$ в виде:
+\begin{equation}
+	\label{momentum_law3}
+	\rho_A \dot{\boldsymbol{v}}_A + q_A \boldsymbol{v}_A - \nabla \cdot \boldsymbol{\sigma}_A = \rho_A\boldsymbol{g}_A + \boldsymbol{b}_A^{int}.
+\end{equation}
+	Выражение \eqref{momentum_law3} называется \textit{уравнением движения континуума} $A$.
+
+	Силу взаимодействия флюидов с остальными континумами запишем в виде:
+\begin{equation}
+	\label{int_force}
+	\boldsymbol{b}_A^{int} = \boldsymbol{b}_A^0 + \boldsymbol{b}_A^{dis}, \quad A = \{F, G\},
+\end{equation}
+	где $\boldsymbol{b}_A^0 = \boldsymbol{\sigma}_a \cdot \nabla (S_A\phi)$ -- \textit{равновесная сила взаимодействия}, равная нулю в состоянии равновесия, $\boldsymbol{b}_A^{dis}$ -- \textit{диссипативная сила взаимодействия} флюида $A$ с остальными континуумами. Для нее необходимо сформулировать определяющие соотношения, из которые приводят к закону Дарси.
+	
+	Cуммируя \eqref{momentum_law3} по всем континуумам $A = \{F, G, S\}$, получим:
+\begin{align}
+	\label{momentum_law_full}
+	\rho_A \dot{\boldsymbol{v}} + \nabla \cdot \left(\sum\limits_{A}\left(\boldsymbol{w}_A \otimes \rho_A\boldsymbol{w}_A\right) -\boldsymbol{\sigma}\right) = \rho \boldsymbol{g},\\
+	\rho = \sum\limits_{A} \rho_A, \quad \rho\boldsymbol{v}=\sum\limits_{A}\rho_A\boldsymbol{v}_A, \quad 
+	\rho\boldsymbol{g}=\sum\limits_{A}\rho_A\boldsymbol{g}_A\\
+	\boldsymbol{w}_A = \boldsymbol{v} - \boldsymbol{v}_A, \quad \sum\limits_A \rho_A\boldsymbol{w}_A = 0, \quad
+	\boldsymbol{\sigma} = \sum\limits_{A} \boldsymbol{\sigma}_A,
+\end{align}
+	где $\rho$ -- плотность среды, $\rho\boldsymbol{v}$ -- среднемассовая (барицентрическая) скорость,
+	$\boldsymbol{w}_A$ -- относительные (диффузионные) скорости континуума $A$,
+	$\boldsymbol{\sigma}$ -- тензор полных напряжений среды.
+	
+\subsection{Закон сохранения энергии.}
