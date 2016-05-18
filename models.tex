@@ -131,9 +131,9 @@
 	\textit{Силу}, действующую континуум $A$ в объёме тела $\beta$, представим в виде суммы объёмных массовых сил, объёмных сил взаимодействия континуумов и контактных сил:
 \begin{equation}
 	\label{force_A}
-	\boldsymbol{f}_A = \boldsymbol{f}_A^b + \boldsymbol{f}_A^{int} + \boldsymbol{f}_A^c = \int\limits_{\chi({\beta}, t)}\rho_A \boldsymbol{g}_A dV + \int\limits_{\chi({\beta}, t)}\boldsymbol{b}_A^{int} dV + \oint\limits_{\partial\chi({\beta}, t)}\boldsymbol{t}_A dS,
+	\boldsymbol{f}_A = \boldsymbol{f}_A^b + \boldsymbol{f}_A^{int} + \boldsymbol{f}_A^c = \int\limits_{\chi({\beta}, t)}\rho_A \boldsymbol{b}_A dV + \int\limits_{\chi({\beta}, t)}\boldsymbol{b}_A^{int} dV + \oint\limits_{\partial\chi({\beta}, t)}\boldsymbol{t}_A dS,
 \end{equation}
-	где $\boldsymbol{g}_A(\boldsymbol{x}, t)$ -- плотность внешней массовой силы,
+	где $\boldsymbol{b}_A(\boldsymbol{x}, t)$ -- плотность внешней массовой силы,
 	$\boldsymbol{b}_A^{int}$ -- плотность сил, действующих на континуум $A$ со стороны остальных континуумов в элементарном объёме,
 	$\boldsymbol{t}_A$ -- контактная сила, действующая на континуум $A$ из вне области $\chi$ со стороны того же континуума.
 
@@ -159,10 +159,10 @@
 \begin{align}
 	\label{momentum_law1}
 	&\int\limits_{\chi(\beta, t)} \left( \frac{\partial (\rho_A \boldsymbol{v}_A)}{\partial t} 
-	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{g}_A - \boldsymbol{b}_A^{int} \right) dV = 0,\\
+	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{b}_A - \boldsymbol{b}_A^{int} \right) dV = 0,\\
 	\label{momentum_law2}
 	&\int\limits_{\chi(\beta, t)} \left[ \boldsymbol{r} \times \left( \frac{\partial (\rho_A \boldsymbol{v}_A)}{\partial t} 
-	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{g}_A - \boldsymbol{b}_A^{int} \right) + \boldsymbol{\varepsilon} : \boldsymbol{\sigma}_A \right] dV = 0,
+	+ \nabla \cdot \left( \boldsymbol{v}_A \otimes \rho_A\boldsymbol{v}_A - \boldsymbol{\sigma}^T_A \right) - \rho_A \boldsymbol{b}_A - \boldsymbol{b}_A^{int} \right) + \boldsymbol{\varepsilon} : \boldsymbol{\sigma}_A \right] dV = 0,
 \end{align}
 	где $\boldsymbol{\varepsilon}$ -- тензор Леви-Чивита. Подставляя \eqref{momentum_law1} в \eqref{momentum_law2} получим:
 \begin{equation}
@@ -171,10 +171,12 @@
 \end{equation}
 	Для выполнения закона сохранения момента импульса \eqref{momentum_law2} необходимо и достаточно выполнения \eqref{stress_sym}.
 	
-	Тогда, используя \eqref{mass_law_e_div1}, запишем закон сохранения для континуума $A$ в виде:
+	Выражения \eqref{momentum_law1}, \eqref{momentum_law2} справедливы, если можно пренебречь вкладом квадрата пульсаций скорости в действующую силу и момент силы. В противном случае в законах сохранения необходимо записывать пульсационные и моментные напряжения.
+
+	Используя \eqref{mass_law_e_div1}, запишем закон сохранения для континуума $A$ в виде:
 \begin{equation}
 	\label{momentum_law3}
-	\rho_A \dot{\boldsymbol{v}}_A + q_A \boldsymbol{v}_A - \nabla \cdot \boldsymbol{\sigma}_A = \rho_A\boldsymbol{g}_A + \boldsymbol{b}_A^{int}.
+	\rho_A \dot{\boldsymbol{v}}_A + q_A \boldsymbol{v}_A - \nabla \cdot \boldsymbol{\sigma}_A = \rho_A\boldsymbol{b}_A + \boldsymbol{b}_A^{int}.
 \end{equation}
 	Выражение \eqref{momentum_law3} называется \textit{уравнением движения континуума} $A$.
 
@@ -183,14 +185,14 @@
 	\label{int_force}
 	\boldsymbol{b}_A^{int} = \boldsymbol{b}_A^0 + \boldsymbol{b}_A^{dis}, \quad A = \{F, G\},
 \end{equation}
-	где $\boldsymbol{b}_A^0 = \boldsymbol{\sigma}_a \cdot \nabla (S_A\phi)$ -- \textit{равновесная сила взаимодействия}, равная нулю в состоянии равновесия, $\boldsymbol{b}_A^{dis}$ -- \textit{диссипативная сила взаимодействия} флюида $A$ с остальными континуумами. Для нее необходимо сформулировать определяющие соотношения, из которые приводят к закону Дарси.
+	где $\boldsymbol{b}_A^0 = \boldsymbol{\sigma}_a \cdot \nabla (S_A\phi)$ -- \textit{равновесная сила взаимодействия}, равная нулю в состоянии равновесия, $\boldsymbol{b}_A^{dis}$ -- \textit{диссипативная сила взаимодействия} флюида $A$ с остальными континуумами. Для последней необходимо сформулировать определяющие соотношения, которые приводят к закону Дарси.
 	
 	Cуммируя \eqref{momentum_law3} по всем континуумам $A = \{F, G, S\}$, получим:
 \begin{align}
 	\label{momentum_law_full}
-	\rho_A \dot{\boldsymbol{v}} + \nabla \cdot \left(\sum\limits_{A}\left(\boldsymbol{w}_A \otimes \rho_A\boldsymbol{w}_A\right) -\boldsymbol{\sigma}\right) = \rho \boldsymbol{g},\\
+	\rho_A \dot{\boldsymbol{v}} + \nabla \cdot \left(\sum\limits_{A}\left(\boldsymbol{w}_A \otimes \rho_A\boldsymbol{w}_A\right) -\boldsymbol{\sigma}\right) = \rho \boldsymbol{b},\\
 	\rho = \sum\limits_{A} \rho_A, \quad \rho\boldsymbol{v}=\sum\limits_{A}\rho_A\boldsymbol{v}_A, \quad 
-	\rho\boldsymbol{g}=\sum\limits_{A}\rho_A\boldsymbol{g}_A\\
+	\rho\boldsymbol{b}=\sum\limits_{A}\rho_A\boldsymbol{b}_A\\
 	\boldsymbol{w}_A = \boldsymbol{v} - \boldsymbol{v}_A, \quad \sum\limits_A \rho_A\boldsymbol{w}_A = 0, \quad
 	\boldsymbol{\sigma} = \sum\limits_{A} \boldsymbol{\sigma}_A,
 \end{align}
@@ -199,3 +201,50 @@
 	$\boldsymbol{\sigma}$ -- тензор полных напряжений среды.
 	
 \subsection{Закон сохранения энергии.}
+
+	Для описание теплопереноса в рассматриваемой системе воспользуемся гипотезой \textit{о локальном термодинамическом равновесии}, которая предполагает, что внутри каждого элементарного объёма среды все континуумы находятся в состоянии термодинамического равновесия. Считается, что при малых скоростях движения флюидов и высокой теплопроводности, использование гипотезы оправдано. В таком случае можно ввести понятие \textit{температуры} $T(\boldsymbol{x}, t)$ для материальной точки $\boldsymbol{x}$ в момент времени $t$.
+
+	Запишем скорость подвода тепла к континууму $A$ в объёме тела $\beta$:
+\begin{equation}
+	\label{heat_supply}
+	Q_A = \int\limits_{\chi(\beta, t)}(\rho_A r_A + r_A^{int})dV + \oint\limits_{\partial \chi(\beta, t)} h_A dS,
+\end{equation}
+	гле $r_A$ -- \textit{плотность внешних} (по отношению к континууму $A$) \textit{объёмных источников тепла},
+	$h_A$ -- \textit{поверхностный приток тепла},
+	$r_A^{int}$ -- \textit{скорость объёмного теплообмена}.
+
+	Величины $r_A^{int}$, $h_A$ во многом аналогичны характеристикам напряженного состояния $\boldsymbol{b}_A^{int}$, $\boldsymbol{t}_A$. Для $r_A^{int}$ справедливо соотношение:
+\begin{equation}
+	\label{heat_exchange}
+	r_F^{int} + r_G^{int} + r_S^{int} = 0,
+\end{equation}
+	а для $h_A$ справедлива \textit{фундаментальная теорема Фурье-Стокса}:
+\begin{equation}
+	\label{fourier_stocks}
+	h_A(\boldsymbol{x}, \boldsymbol{n}) = \boldsymbol{q}_A(\boldsymbol{x}) \cdot \boldsymbol{n},
+\end{equation}
+	где $\boldsymbol{q}_A(\boldsymbol{x})$ -- \textit{вектор теплового потока}.
+
+	Запишем закон баланса энергии в виде:
+\begin{align}
+	\label{energy_law1}
+	\frac{d}{dt}\int\limits_{\chi(\beta, t)} \rho e dV &= \sum_A\left[\int\limits_{\chi(\beta, t)}\left(\rho_A\boldsymbol{b}_A\cdot\boldsymbol{v}_A\right)dV + \oint\limits_{\partial\chi(\beta, t)}\left(\boldsymbol{t}_A \cdot \boldsymbol{v}_A\right)\right] + \int\limits_{\chi(\beta, t)}\left(\nabla \cdot \boldsymbol{q} + \rho r\right)dV\\
+	\label{energy_law2}
+	\rho e &= \sum_A \rho_A e_A, \quad e_A = u_A + \frac{\boldsymbol{v}_A \cdot \boldsymbol{v}_A}{2}, \quad \boldsymbol{q} = \sum\limits_A \boldsymbol{q}_A,\\
+	\label{energy_law3}
+	\rho r &= \sum\limits_{A} \rho_A r_A, \quad A = \{F, G, S\},
+\end{align}
+	где $e_A$ -- \textit{плотность полной энергии} системы,
+	$u_A$ -- \textit{плотность внутренней энергии}
+	В выражении \eqref{energy_law1} слева стоит материальная производная от полной энергии тела $\beta$ -- внутренней и кинетической, справа стоит мощность внешних сил и суммарная скорость подвода тепла.
+
+	Используя \eqref{mass_law_e_div1}, \eqref{momentum_law3} получим \textit{приведённое уравнение баланса энергии} в виде:
+\begin{equation}
+	\label{energy_law4}
+	\sum\limits_{A}\left[\rho_A \dot{u}_A + q_A\left(u_A - \frac{\boldsymbol{v}_A \cdot \boldsymbol{v}_A}{2}\right)\right] = 
+	\sum\limits_{A}\left[\boldsymbol{b}_A^{int}\cdot \boldsymbol{w}_A + \boldsymbol{\sigma}_A : (\nabla \otimes \boldsymbol{v}_A)\right] + 
+	\nabla \cdot \boldsymbol{q} + \rho r,
+\end{equation}
+	где $\boldsymbol{w}_A$ -- скорость материальной точки континуума $A$ относительно скелета $S$.
+
+	 
