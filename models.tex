@@ -121,7 +121,7 @@
 	\left.\frac{\partial \rho_A}{\partial t}\right|_{\boldsymbol{x}} + \nabla \cdot \left(\rho_A \boldsymbol{v}_A\right) = 0, \quad A=\{F, G, S\}.
 \end{equation}
 	
-	Выражения \eqref{mass_law_l}, \eqref{mass_law_e}, \eqref{mass_law_e_div} справедливы при отсутствии химических (фазовых) превращений. В противном случае необходимо писать в правой части соответствующие интенсивности переходов:
+	Выражения \eqref{mass_law_l}, \eqref{mass_law_e}, \eqref{mass_law_e_div} справедливы при отсутствии химических (фазовых) превращений. В противном случае необходимо писать в правой части соответствующие интенсивности переходов $q_A$:
 \begin{equation}
 	\label{mass_law_e_div1}
 	\left.\frac{\partial \rho_A}{\partial t}\right|_{\boldsymbol{x}} + \nabla \cdot \left(\rho_A \boldsymbol{v}_A\right) = q_A, \quad A=\{F, G, S\}.
@@ -180,12 +180,15 @@
 \end{equation}
 	Выражение \eqref{momentum_law3} называется \textit{уравнением движения континуума} $A$.
 
-	Силу взаимодействия флюидов с остальными континумами запишем в виде:
+	Сила взаимодействия, тензор напряжений и объёмная доля представляются в виде:
 \begin{equation}
 	\label{int_force}
-	\boldsymbol{b}_A^{int} = \boldsymbol{b}_A^0 + \boldsymbol{b}_A^{dis}, \quad A = \{F, G\},
+	\boldsymbol{b}_A^{int} = \boldsymbol{b}_A^0 + \boldsymbol{b}_A^{dis}, 
+	\quad \boldsymbol{\sigma}_A = \boldsymbol{\sigma}_A^0 + \boldsymbol{\sigma}_A^{dis}, 
+	\quad \phi_A = \phi_A^0 + \phi_A^{dis},	
+	\quad A = \{F, G, S\},
 \end{equation}
-	где $\boldsymbol{b}_A^0 = \boldsymbol{\sigma}_a \cdot \nabla (S_A\phi)$ -- \textit{равновесная сила взаимодействия}, равная нулю в состоянии равновесия, $\boldsymbol{b}_A^{dis}$ -- \textit{диссипативная сила взаимодействия} флюида $A$ с остальными континуумами. Для последней необходимо сформулировать определяющие соотношения, которые приводят к закону Дарси.
+	где $\boldsymbol{b}_A^0$, $\boldsymbol{\sigma}_A^0$, $\phi_A^0$ и $\boldsymbol{b}_A^{dis}$, $\boldsymbol{\sigma}_A^{dis}$, $\phi_A^{dis}$ -- \textit{равновесные} и \textit{диссипативные} значения силы взаимодействия, тензора напряжений и объёмной доли. При этом имеем: $\boldsymbol{b}_A^0 = \boldsymbol{\sigma}_a \cdot \nabla (\phi_A)$. Для $\boldsymbol{b}_A^{dis}$ формулируются определяющие соотношения, которые приводят к закону Дарси.
 	
 	Cуммируя \eqref{momentum_law3} по всем континуумам $A = \{F, G, S\}$, получим:
 \begin{align}
@@ -200,9 +203,9 @@
 	$\boldsymbol{w}_A$ -- относительные (диффузионные) скорости континуума $A$,
 	$\boldsymbol{\sigma}$ -- тензор полных напряжений среды.
 	
-\subsection{Закон сохранения энергии.}
+\subsection{Закон сохранения энергии. Второе начало термодинамики.}
 
-	Для описание теплопереноса в рассматриваемой системе воспользуемся гипотезой \textit{о локальном термодинамическом равновесии}, которая предполагает, что внутри каждого элементарного объёма среды все континуумы находятся в состоянии термодинамического равновесия. Считается, что при малых скоростях движения флюидов и высокой теплопроводности, использование гипотезы оправдано. В таком случае можно ввести понятие \textit{температуры} $T(\boldsymbol{x}, t)$ для материальной точки $\boldsymbol{x}$ в момент времени $t$.
+	Для описание теплопереноса в рассматриваемой системе воспользуемся гипотезой \textit{о локальном термодинамическом равновесии}, которая предполагает, что внутри каждого элементарного объёма среды все континуумы находятся в состоянии термодинамического равновесия. Считается, что при малых скоростях движения флюидов и высокой теплопроводности, использование гипотезы оправдано. В таком случае можно ввести понятие \textit{температуры} $\theta(\boldsymbol{x}, t)$ для материальной точки $\boldsymbol{x}$ в момент времени $t$.
 
 	Запишем скорость подвода тепла к континууму $A$ в объёме тела $\beta$:
 \begin{equation}
@@ -228,14 +231,14 @@
 	Запишем закон баланса энергии в виде:
 \begin{align}
 	\label{energy_law1}
-	\frac{d}{dt}\int\limits_{\chi(\beta, t)} \rho e dV &= \sum_A\left[\int\limits_{\chi(\beta, t)}\left(\rho_A\boldsymbol{b}_A\cdot\boldsymbol{v}_A\right)dV + \oint\limits_{\partial\chi(\beta, t)}\left(\boldsymbol{t}_A \cdot \boldsymbol{v}_A\right)\right] + \int\limits_{\chi(\beta, t)}\left(\nabla \cdot \boldsymbol{q} + \rho r\right)dV\\
+	\frac{d}{dt}\int\limits_{\chi(\beta, t)} \rho e dV &= \sum_A\left[\int\limits_{\chi(\beta, t)}\left(\rho_A\boldsymbol{b}_A\cdot\boldsymbol{v}_A\right)dV + \oint\limits_{\partial\chi(\beta, t)}\left(\boldsymbol{t}_A \cdot \boldsymbol{v}_A\right)dS\right] + \int\limits_{\chi(\beta, t)}\left(\nabla \cdot \boldsymbol{q} + \rho r\right)dV\\
 	\label{energy_law2}
 	\rho e &= \sum_A \rho_A e_A, \quad e_A = u_A + \frac{\boldsymbol{v}_A \cdot \boldsymbol{v}_A}{2}, \quad \boldsymbol{q} = \sum\limits_A \boldsymbol{q}_A,\\
 	\label{energy_law3}
 	\rho r &= \sum\limits_{A} \rho_A r_A, \quad A = \{F, G, S\},
 \end{align}
 	где $e_A$ -- \textit{плотность полной энергии} системы,
-	$u_A$ -- \textit{плотность внутренней энергии}
+	$u_A$ -- \textit{плотность внутренней энергии}.
 	В выражении \eqref{energy_law1} слева стоит материальная производная от полной энергии тела $\beta$ -- внутренней и кинетической, справа стоит мощность внешних сил и суммарная скорость подвода тепла.
 
 	Используя \eqref{mass_law_e_div1}, \eqref{momentum_law3} получим \textit{приведённое уравнение баланса энергии} в виде:
@@ -246,5 +249,42 @@
 	\nabla \cdot \boldsymbol{q} + \rho r,
 \end{equation}
 	где $\boldsymbol{w}_A$ -- скорость материальной точки континуума $A$ относительно скелета $S$.
+
+	Для формулировки второго начала термодинамики введём понятие плотности \textit{энтропии} континуума $A$ -- $\eta_A$.
+	Введение понятия энтропии позволяет верным образом учесть направление термодиначеских процессов, а также ввести понятие ноебратимых процессов.
+	Между тем второе начало термодинамики будет использовано далее для построения определяющих соотношений насыщенной пористой среды.
+
+	Запишем \textit{второе начало термодинамики} в интегральном виде:
+\begin{equation}
+	\label{second_origin1}
+	\frac{d}{dt}\int\limits_{\chi(\beta,t)}\sum\limits_A \rho_A \eta_A dV \geq \int\limits_{\chi(\beta, t)}\frac{\rho r}{\theta}dV + \oint\limits_{\partial\chi(\beta, t)}\frac{\boldsymbol{q}\cdot \boldsymbol{n}}{\theta}dS.
+\end{equation}
+
+	Преобразуем \eqref{second_origin1} и запишем в дифференциальном виде:
+\begin{align}
+	\label{second_origin2}
+	\theta\sum\limits_{A}\left[\rho_A \dot{\eta}_A + q_A \eta_A\right] &- \nabla \cdot \boldsymbol{q} - \rho r + \frac{\boldsymbol{q}\cdot\nabla\theta}{\theta} \geq 0,\\
+	\delta_M = \theta\sum\limits_{A}\left[\rho_A \dot{\eta}_A + q_A \eta_A\right] &- \nabla \cdot \boldsymbol{q} - \rho r, \quad \delta_T = \frac{\boldsymbol{q}\cdot\nabla\theta}{\theta},\\
+	\delta_M &+ \delta_T \geq 0,
+\end{align}
+	где $\delta_M$ имеет смысл \textit{механической (внутренней) диссипации}, 
+	а $\delta_T$ -- \textit{термической диссипации}, связанной с теплопроводностью среды.
+
+	Запишем \eqref{second_origin2} через \textit{плотность свобоной энергии} $\psi_A = u_A - \theta \eta_A$. Для этого воспользуемся \eqref{velocities_strains}, \eqref{energy_law4}, \eqref{int_force}, получим:
+\begin{multline}
+	\label{second_origin3}
+	-\sum\limits_{A} \left[\rho_A \left(\dot{\psi_A} + \eta_A\dot{\theta}\right) + q_A\left(\psi_A - \frac{\boldsymbol{v}_A\cdot \boldsymbol{v}_A}{2}\right) + \boldsymbol{\sigma}_a :\left(\nabla \otimes \phi_A^0 \boldsymbol{w}_A\right)\right]+\\
+	+\left(\boldsymbol{\sigma} \cdot \boldsymbol{F}_S^{-1T}\right) : \dot{\boldsymbol{F}}_S + \delta_f + \delta_T \geq 0
+\end{multline}
+\begin{equation}
+	\label{second_origin4}
+	\boldsymbol{\sigma} = \sum_A \boldsymbol{\sigma}_A, 
+	\quad \delta_f = \sum_A\left[\boldsymbol{\sigma}_A^{dis}:\left(\nabla \otimes \boldsymbol{w}_A\right)+\boldsymbol{b}_A^{dis} \cdot \boldsymbol{w}_A\right],
+\end{equation}
+	где $\boldsymbol{\sigma}$ -- тензор полных напряжений среды,
+	$\delta_f$ -- \textit{диссипация фильтрации}.
+	Выражение \eqref{second_origin4} носит название -- \textit{вторая форма приведённого неравенства Клаузиуса-Дюгема}.
+	
+\subsection{Определяющие уравнения.}
 
 	 
