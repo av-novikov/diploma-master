@@ -5,7 +5,6 @@
 \setcounter{subsection}{0}
 \setcounter{equation}{0}
 
-
 \subsection{Виды несовершенств}
 	В ходе бурения, освоения и эксплуатации скважины различные технологические процессы воздействуют на ОЗП.
 	В результате её ФЕС меняются.
@@ -35,12 +34,12 @@
 	В процессе бурения скважины происходит загрязнение ОЗП фильтратом бурового раствора.
 	В дальнейшем повреждение ОЗП пожет произойти при проведении геофизических и промысловых исследований, установке и цементированию эксплуатационной колонны, освоении и заканчивании скважины. На Рис. \ref{pic:near_wellbore} представлена типичная структура ОЗП. В ней выделяют внешнюю/внутреннюю фильтрационные корки, зону проникновения фильтрата.
 \begin{figure}[H]
-	\label{pic:near_wellbore}
 	\centerline{\includegraphics[width=0.6\textwidth]{pic/near-wellbore.png}}
 	\caption{Структура ОЗП, образующаяся в результате различных технологических операций. Выделяют:
 	\textit{1} -- внешняя фильтрационная корка,
 	\textit{2} -- внутренняя корка (зона кольматации), 
 	\textit{3} -- зона проникновения фильтрата.}
+	\label{pic:near_wellbore}
 \end{figure}
 
 	Тем не менее, без особой нужды, при моделировании притока к скважины не рассматривают такую сложную структуру ОЗП. Обычно считают, что вокрук скважины есть кольцевая область с ухудшенной проницаемостью $k_d \leq k$, cм. Рис \ref{pic:near_wellbore_our}.
@@ -52,9 +51,9 @@
 \end{equation}
 
 \begin{figure}[H]
-	\label{pic:near_wellbore_our}
 	\centerline{\includegraphics[width=0.4\textwidth]{pic/near-wellbore-our.png}}
 	\caption{Рассматриваемая модель ОЗП, обладает ухудшенной проницаемостью $k_d \leq k$.}
+	\label{pic:near_wellbore_our}
 \end{figure}
 
 \subsubsection{Перфорация}
@@ -78,14 +77,14 @@
 	где корреляции для величин $\alpha_{\theta}$, $a$, $b$, $c_1$, $c_2$ можно найти непосредственно в \cite{tariq}, $k_{xx}$ и $k_{zz}$ -- проницаемости пласта в вертикальном и горизонтальном направлениях.
 
 \begin{figure}[H]
-	\label{pic:tunnels}
 	\centerline{\includegraphics[width=0.6\textwidth]{pic/tunnels.png}}
 	\caption{Характерная схема расположения ПК.}
+	\label{pic:tunnels}
 \end{figure}
 
-	Корреляции \eqref{tunnels_skin} найдены также с использованием явного численного расчёта соответствующих постановок. Ниже будет представлено сравнение численного расчёта постановки, проводимого в текущей работе, с каналами с представленными корреляциями.
+	Корреляции \eqref{tunnels_skin} найдены также с использованием явного численного расчёта соответствующих постановок. Ниже будет представлено сравнение численного расчёта, проводимого в текущей работе, постановки с каналами по представленным корреляциям.
 
-\subsubsection{Частичное проникновение}
+\subsubsection{Скважина, несовершенная по степени вскрытия}
 	
 	С точки зрения терминологии, представленной например в \cite{basniev}, несовершенства скважины разделяют на два типа: скважина несовершенная по \textit{характеру} и \textit{степени} вскрытия. Характер вскрытия был рассмотрен в двух предыдущих пунктах. Степень вскрытия частично рассмотрена в предыдущем пункте. Однако с методологической точки зрения следует рассмотреть отдельно случай частичного проникновения скважины в пласт, неполного его вскрытия.
 В данном примере считается что скважина вскрыта в некотором интервале глубин, не содержащим всю мощность пласта, полностью по всему диаметру.
@@ -97,16 +96,120 @@
 	s_{pp} &= \left(\frac{1}{\bar{h}}-1\right)\ln\frac{4h}{r_w}-\frac{\phi(\bar{h})}{2\bar{h}}, \\
 	\phi(\bar{h}) &= \ln\frac{\Gamma(0.875\bar{h})\Gamma(0.125\bar{h})}{\Gamma(1-0.875\bar{h})\Gamma(1-0.125\bar{h})},\nonumber
 \end{align}
-	где $\bar{h} = \displaystyle\frac{b}{h}$ -- доля вскрытой мощности пласта, $\Gamma(n)$ -- гамма-функция Эйлера.
+	где $\bar{h} = \displaystyle\frac{h_p}{h}$ -- доля вскрытой мощности пласта, $\Gamma(n)$ -- гамма-функция Эйлера.
 
-	Отдельным интересным вопросом при расчёте частично перфорированной скважины (как, впрочем, и каналов) является распределение дебита вдоль перфорированной части.
+\begin{figure}[H]
 
+	\begin{subfigure}[b]{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.7\textwidth]{pic/part_penetrating.png}
+	\caption{Скважина с неполным проникновением}
+	\label{pic:part_problem}
+	\end{subfigure}
+~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{pic/rate_distr.png}
+		\caption{Распределение дебита вдоль ствола}
+		\label{pic:rate_distr}
+	\end{subfigure}
+	\caption{Распределение дебита для несовершенной скважины.}
+	\label{pic:part_pen}
+\end{figure}
+
+	Отдельным интересным вопросом при расчёте скважины, неполностью вскрывшей пласт (как, впрочем, и каналов), является распределение дебита вдоль перфорированной части. На Рис. \ref{pic:rate_distr} показано установившееся распределение дебита вдоль перфорированной части ствола, при условии постоянства давления вдоль ствола.
+Постановка изобрабражена на Рис. \ref{pic:part_problem}.
 
 \subsection{Теплоперенос при фильтрации к несовершенной скважине}
 	Выше были рассмотрены основные виды несовршенств скважины, рассматрваемые в данной работе, а также представлены приближённые формулы для расчёта дополнительного гидродинамического сопротивления, возникающего в результате данных несовершенств.
-	Подобное рассмотрение возможно лишь в однофазном случае, хотя и для случая многофазной фильтрации приводится некая аналитика.
-	Рассмотрим влияние этих несовершенств на поведение забойной температуры.
+	Подобное рассмотрение возможно лишь в однофазном случае, хотя и для случая многофазной фильтрации некоторые авторы приводят аналитические выражения.
+	Рассмотрим влияние этих несовершенств на поведение забойной температуры \cite{ramazanov_spe}.
 
-\subsection{Случай совершенной скважины}
+\subsubsection{Случай совершенной скважины}
 	Для начала установим выражение для забойной температуры для притока к совершенной скважине.
 	Пренебрегая теплопроводностью запишем уравнение баланса энергии в следующем виде:
+\begin{align}
+	\label{energy_simple}
+	\frac{\partial{T}}{\partial{t}}+u(r, t)\frac{\partial{T}}{\partial{r}} &= -\varepsilon u(r, t)\frac{\partial p}{\partial{r}}
+	+\eta^{\ast}\frac{\partial{p}}{\partial{t}}, \\
+	u(r, t) = -c\frac{k}{\mu}\frac{\partial{p}}{\partial{r}}, \quad c = \frac{c_o \rho_o}{c_t},  \quad
+	c_t &= \phi \rho_o c_o + (1-\phi)\rho_{s}c_s, \quad \eta^{\ast} = \phi c \eta,
+\end{align}
+	где $u(r, t)$ -- скорость конвективного теплопереноса,
+	$\varepsilon$ -- коэффициент Джоуля-Томпсона нефти,
+	$\eta$ -- коэффициент адиабатического расширения нефти,
+	$c_t$ -- теплоёмкость пористой насыщенной среды.
+	
+	Уравнение \eqref{energy_simple} учитывает конвективный перенос тепла, а также изменение температуры вследствие 
+	\textit{баротермического эффекта}, т.е. изменения температуры вследствие изменения давления.
+	По сути баротермический эффект заключает в себе эф-т Джоуля-Томпсона и адиабатическое расширение флюида.
+	В уравнении пренебрежено теплопроводностью, т.к. на небольших временах (далее будет уточнено) теплопроводность не даёт существенного вклада в изменение температуры, в сравнение с другими эффектами.
+
+	Замыкая уравнение \eqref{energy_simple} начальным и граничным условиями:
+\begin{equation}
+	\label{conditions_simple}
+	T(r, 0) = T_0, \quad T(r_e, t) = T_0,
+\end{equation}
+	получим, что \eqref{energy_simple}, \eqref{conditions_simple} -- смешанная задача для гиперболического уравнения в кольце, обладающая аксиальной симметрией.
+
+	Решение задачи \eqref{energy_simple}, \eqref{conditions_simple} можно получить методом характеристик.
+	Имеем:
+\begin{align}
+	\label{sol_simple}
+	T(r(t, r_1), t) = T_0 &+ \varepsilon\left[p(r_1, 0)-p(r(t, r_1), t)\right]+
+	(\varepsilon+\eta^{\ast})\int\limits_0^t \frac{\partial p(r(\tau, r_1), \tau)}{\partial \tau}d\tau,\\
+	\label{chars}
+	\frac{dr}{dt}&=u(r, t), \quad r(0)=r_1,
+\end{align}
+
+	Далее необходимо найти зависимость $p = p(r, t)$. Примем, для простоты, что флюид и скелет -- несжимаемы, давление устанавливается мнгновенно:
+\begin{equation}
+	\label{pres}
+	p = 
+	\begin{cases}
+		p_0, &\quad t=0,\\
+		p(r), &\quad t>0,
+	\end{cases}
+\end{equation}
+	где $p_0$ -- начальное пластовое давление, $p(r)$ -- стационарное распределение давления:
+\begin{equation}
+	\label{pres_state}
+	p(r) = p_w + \frac{\Delta p \ln\displaystyle\frac{r}{r_w}}{\ln\displaystyle\frac{r_e}{r_w}}
+	 = p_w + \frac{Q\mu}{2\pi k h}\ln\frac{r}{r_w},
+\end{equation}
+	где $\Delta p = p_e - p_w$ -- депрессия на пласт, $Q$ -- объёмный дебит нефти.
+
+	Тогда подставляя \eqref{pres_state} в \eqref{chars}, получим скорость конвективного переноса и уравнение характеристик:
+\begin{align}
+	\label{convection_speed}
+	u(r, t) = -\frac{cQ}{2\pi r h} = -c\frac{k}{\mu}\frac{\Delta p}{\ln\displaystyle\frac{r_e}{r_w}},\\
+	\label{chars_sol}
+	r = \sqrt{r_1^2 - \displaystyle\frac{cQ}{\pi h}t} = \sqrt{r_1^2 - 2c\displaystyle\frac{k}{\mu}\frac{\Delta p}{\ln\displaystyle\frac{r_e}{r_w}}t}.
+\end{align}
+
+	Финальное выражение для забойной температуры получим в виде:
+\begin{equation}
+	\label{temperature}
+		T(r_w, t) = 
+	\begin{cases}
+		\displaystyle\frac{\varepsilon Q}{2\pi \sigma}\left[\ln\displaystyle\frac{r_T}{r_w}-d\ln\displaystyle\frac{r_e}{r_T}\right] = \displaystyle\frac{\varepsilon \Delta p}{\ln \displaystyle\frac{r_e}{r_w}}\left[\ln\displaystyle\frac{r_T}{r_w}-d\ln\displaystyle\frac{r_e}{r_T}\right], &\quad t\leq t_{st} ,\\
+		\varepsilon \Delta p =  \displaystyle\frac{\varepsilon Q}{2\pi\sigma}\ln\frac{r_e}{r_w}, &\quad t>t_{st},
+	\end{cases}
+\end{equation}
+\begin{equation}
+	\label{terms33}
+	r_T = \sqrt{r_w^2 + \frac{cQ}{\pi h}t}, \quad
+	\sigma = \frac{kh}{\mu}, \quad d = \frac{\eta^{\ast}}{\varepsilon}, \quad
+	t_{st} = \frac{\pi h r_e^2}{cQ},
+\end{equation}
+	где $r_T$ имеет смысл радиуса зондирования пласта,
+	$\sigma$ -- проводимость,
+	$t_{st}$ -- время выхода температуры на стационар.
+
+	Зачастую параметр $d$ мал и член, отвечающий за адиабатику, опускают. Тогда имеем:
+\begin{equation}
+	\label{temperature1}
+	T(r_w, t) = \frac{\varepsilon Q}{4 \pi \sigma}\ln\left[1+\frac{cQ}{\pi h r_w^2}t\right]	\approx
+	\frac{\varepsilon Q}{4 \pi \sigma}\left[\ln\frac{cQ}{\pi h r_w^2}+\ln t\right],
+\end{equation}
+	где правое выражение записано в предположении, что $t \gg \displaystyle\frac{\pi h r_w^2}{cQ}$.
