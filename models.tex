@@ -285,6 +285,65 @@
 	$\delta_f$ -- \textit{диссипация фильтрации}.
 	Выражение \eqref{second_origin4} носит название -- \textit{вторая форма приведённого неравенства Клаузиуса-Дюгема}.
 	
-\subsection{Определяющие уравнения.}
+\subsection{Определяющие уравнения}
+
+\subsection{Постановка задачи.}
+	Запишем математическую модель двухкомпонентной (нефть, газ) $\{O, G\}$ двухфазной (жидкость, газ) $\{l, g\}$ фильтрации флюида в пласте.
+	Уравнения баланса массы для компонент в таком случае будут иметь вид:
+\begin{align}
+	\label{eqns1}
+	\frac{\partial}{\partial{t}}\left[mS_oC_{Ol}\rho_l+mS_gC_{Og}\rho_g\right]+
+	{\rm div}\,{\left[C_{Ol}\rho_l\boldsymbol{w}_l+C_{Og}\rho_g\boldsymbol{w}_g\right]} = 0,\\
+	\frac{\partial}{\partial{t}}\left[mS_oC_{Gl}\rho_l+mS_gC_{Gg}\rho_g\right]+
+	{\rm div}\,{\left[C_{Gl}\rho_l\boldsymbol{w}_l+C_{Gg}\rho_g\boldsymbol{w}_g\right]} = 0,
+\end{align}
+	где массовые доли компонентов в фазах $C_{Ol}$, $C_{Og}$, $C_{Gl}$, $C_{Gg}$ примем равными:
+\begin{align}
+	\label{fractions}
+	C_{Ol} = \frac{\rho_O^{STC}}{\rho_O^{STC} + \rho_G^{STC}Rs(p)}, \quad C_{Og} = 0,\nonumber\\
+	C_{Gl} = \frac{\rho_G^{STC}Rs(p)}{\rho_O^{STC} + \rho_G^{STC}Rs(p)}, \quad C_{Gg} = 1,
+\end{align}
+	где $\rho_O^{STC}$, $\rho_G^{STC}$ -- плотность нефти и газа в стандартных условиях,
+	$Rs = Rs(p)$ -- газосодержание нефти.
+
+	Будем использовать следующие уравнения состояния для фаз:
+\begin{align}
+	\label{states}
+	\rho_{l} = \frac{\rho_O^{STC} + \rho_G^{STC}Rs(p)}{B_l(p)}, \quad \rho_{g} = \frac{\rho_G^{STC}}{B_g(p)},
+\end{align}
+	где $B_l = B_l(p)$, $B_g = B_g(p)$  -- объёмные коэффициенты нефти и газа соответственно.
+	Здесь мы рассматриваем газированную жидкость, нефть в газовой фазе не содержится.
+	
+	Будем рассматривать фильтрацию по закону Дарси:
+\begin{align}
+	\label{vel}
+	\boldsymbol{w}_l = -\frac{\mathbb{K}k_{rl}}{\mu_l}\nabla p, \quad
+	\boldsymbol{w}_g = -\frac{\mathbb{K}k_{rg}}{\mu_g}\nabla p, 
+\end{align}
+	где $\mathbb{K} = k_x(r)\boldsymbol{e}_x\boldsymbol{e}_x + k_y(r)\boldsymbol{e}_y\boldsymbol{e}_y+ k_z(r)\boldsymbol{e}_z\boldsymbol{e}_z$ -- тензор проницаемости,
+	$k_{ro}$, $k_{rg}$ -- относительные фазовые проницаемости жидкой и газовой фаз,
+	$\mu_l$, $\mu_g$ -- вязкости фаз.
+	
+	Выражения для $k_x(r)$, $k_y(r)$, $k_z(r)$:
+\begin{align}
+	\label{perms}
+	k_x = k_y &\equiv k(r) = 
+	\begin{cases}
+		k, &\quad r\geq r_d,\\
+		k_d, &\quad r_w\geq r > r_d
+	\end{cases}\\
+	k_z &\equiv \text{const}.
+\end{align}
+
+	Примем что $S_o \equiv S$, $S_g = 1 - S$, тогда подставляя \eqref{fractions}, \eqref{states} в \eqref{eqns1} имеем:
+\begin{align}
+	\label{eqns2}
+	\frac{\partial}{\partial{t}}\left(\frac{mS}{B_l}\right)&=
+	{\rm div}\,\left(\frac{kk_{rl}}{\mu_l B_l}\nabla p\right),\\
+	\frac{\partial}{\partial{t}}\left(\frac{m(1-S)}{B_g}+\frac{mSRs}{B_l}\right)&=
+	{\rm div}\,\left(\frac{kk_{rg}}{\mu_g B_g}\nabla p+\frac{kk_{rl}Rs}{\mu_l B_l}\nabla p\right).
+\end{align}
+	
+	
 
 	 
