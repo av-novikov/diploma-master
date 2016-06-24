@@ -1,7 +1,7 @@
-\section*{Глава 2. Неизотермическая фильтрация флюида к несовершенным скважинам.}
-\addcontentsline{toc}{section}{Глава 2. Неизотермическая фильтрация флюида к несовершенным скважинам.}
+\section*{Глава 3. Неизотермическая фильтрация флюида к несовершенным скважинам.}
+\addcontentsline{toc}{section}{Глава 3. Неизотермическая фильтрация флюида к несовершенным скважинам.}
 
-\setcounter{section}{2}
+\setcounter{section}{3}
 \setcounter{subsection}{0}
 \setcounter{equation}{0}
 
@@ -213,3 +213,81 @@
 	\frac{\varepsilon Q}{4 \pi \sigma}\left[\ln\frac{cQ}{\pi h r_w^2}+\ln t\right],
 \end{equation}
 	где правое выражение записано в предположении, что $t \gg \displaystyle\frac{\pi h r_w^2}{cQ}$.
+	
+	В координатах $(\ln{t}, T)$ зависимость в правой части \eqref{temperature1} будет представлена прямой, коэффициент наклона которой будет обратно пропорционален проводимости $\sigma$.
+	Это выражение очень похоже на аналогичное выражение для давления при исследовании ГДИ, для него применимы аналогичные методы интепретации данных.
+
+\subsubsection{Случай несовершенной скважины}
+	Тут под несовершенством понимается ухудшенные ФЕС ОЗП, а также перфорацию.
+	Суммарный скин-фактор будет равен: $s = s_1 + s_2$, где скин $s_1$ ответственен за перфорацию, а $s_2$ -- за повреждение ОЗП.
+	
+	Первоначально будет зондирована ОЗП с проводимостью $\sigma_1 = \frac{k_dh}{\mu}$. Скин-фактор при этом будет равен:
+	$s = s_1$.
+	Соответствующее выражение для температуры имеет вид:
+\begin{equation}
+	\label{temperature2}
+	T(r_w, t) = \frac{\varepsilon Q}{4 \pi \sigma_1}\left[\ln\frac{cQ}{\pi h r_w^2}+\ln t + 2s_1\right],
+	\quad r_T < r_d.
+\end{equation}
+	
+	Когда же радиус зондирования превысит размер ОЗП: $r_T \geq r_d$.
+	Проводимость будет равна: $\sigma_2 = \frac{kh}{\mu}$, скин -- $s = s_1 + s_2$.
+	Для скин-фактора $s_2$ верно выражение \eqref{skin_damage}.
+	Выражение для температуры предстанет в виде:
+\begin{equation}
+	\label{temperature3}
+	T(r_w, t) = \frac{\varepsilon Q}{4 \pi \sigma_2}\left[\ln\frac{cQ}{\pi h r_w^2}+\ln t + 2s_1 + 2s_2\right],
+	\quad r_T \geq r_d.
+\end{equation}
+
+	В коодинатах $(\ln{t}, T)$ выражения \eqref{temperature2}, \eqref{temperature3} будут иметь вид прямой:
+\begin{align}	
+	\label{imperfect_lines}
+	T &= A + B\ln t,\\
+	A_1 &= B_1\left[\ln\frac{cQ}{\pi h r_w^2} + 2s_1\right], \quad B_1 = \frac{\varepsilon Q}{4\pi\sigma_1},\\
+	A_2 &= B_2\left[\frac{A_1}{B_1} + 2s_2\right], \quad B_2 = \frac{\varepsilon Q}{4\pi\sigma_2},\\
+\end{align}
+	Прямые изображены на Рис. \ref{pic:imperfect_lines}:
+\begin{figure}[H]
+	\centerline{\includegraphics[width=0.6\textwidth]{pic/imperfect_lines.png}}
+	\caption{График для забойной температуры в осях $(\ln t, T)$. Первый участок соответствует зондированию ОЗП, второй -- зондированию пласта.}
+	\label{pic:imperfect_lines}
+\end{figure}
+
+	Результатом этого рассмотрения является нахождение проницаемостей $k_d$, $k$ ОЗП и пласта и скин-факторов $s_1$, $s_2$, ответственных за перфорацию и повреждение ОЗП, из графика забойной температуры при выходе на режим. Этот метод носит название -- \textit{метод термозондирования Э.Б. Чекалюка} \cite{checkalyuk}.
+
+	Тут стоит отметить, что метод имеет существенные ограничения по применению. Во-первых, метод рассматривает лишь однофазную фильтрацию. Во-вторых, характерное время когда $r_T = r_d$ составляет несколько часов. Этот период времени, часто лежит в области эффекта влияния ствола скважины (ВСС), который может существенно повлиять на динамику температуры, особенно когда датчик находится на некотором удалении от забоя скважины. Поэтому метод может быть использован лишь в ограниченном круге примеров, в качестве первого приближения.
+	
+	На Рис. \ref{pic:analytic_cmp} представлено сравнение аналитики \eqref{temperature1}, \eqref{imperfect_lines} с численным расчётом:
+	
+\begin{figure}[H]
+
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{pic/perfect.png}
+		\caption{Совершенная скважина}
+		\label{pic:perf}
+	\end{subfigure}
+~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{pic/imperf1.png}
+		\caption{Несовершенная скважина с параметрами: $s_2=5, r_d = 0.2$}
+		\label{pic:imperf1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{pic/imperf2.png}
+		\caption{Несовершенная скважина с параметрами: $s_2=5, r_d = 0.4$}
+		\label{pic:imperf2}
+	\end{subfigure}
+~
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\textwidth]{pic/imperf3.png}
+		\caption{Несовершенная скважина с параметрами: $s_2=5, r_d = 0.6$}
+		\label{pic:imperf3}
+	\end{subfigure}
+	\caption{Сравнение аналитического и численного расчёта для совершенной и несовершенной скважины при различных размеров ОЗП.}
+	\label{pic:analytic_cmp}
+\end{figure}
