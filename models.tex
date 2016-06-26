@@ -15,7 +15,7 @@
 	Здесь и далее, для простоты, будем рассматривать флюид, состоящий из двух компонент, которые могут находится в двух фазах (жидкой и газообразной) -- \textit{бинарную смесь}.
 	В данной главе будут представлены законы сохранения, основные определяющие соотношения такой системы. Как результат будут получены математические модели 	процессов массо- и теплопереноса в пористых средах.
 
-\subsection{Кофигурации. Градиент деформации. Подходы Эйлера и Лагранжа описания движения сплошной среды.}
+\subsection{Конфигурации. Градиент деформации. Подходы Эйлера и Лагранжа описания движения сплошной среды.}
 	\textit{Материальная точка} или \textit{элементарный объём} -- объём сплошной среды, пренебрежимо малый по сравнению с размерами рассматриваемой задачи, но, при том,   достаточный для того чтобы можно было проводить по нему осреднение. Дальнейшее рассмотрение будет проводится именно для таких объёмов.
 	
 	Обозначим $\kappa_A \in \mathbb{E}^3$ -- область, которую занимают частицы скелета (A=S) или флюида (A=F, G) в момент времени $t=0$. Область $\kappa_A$ в дальнейшем будем называть \textit{отсчётной (начальной) конфигурацией} скелета или флюида соответственно. 
@@ -285,17 +285,16 @@
 	$\delta_f$ -- \textit{диссипация фильтрации}.
 	Выражение \eqref{second_origin4} носит название -- \textit{вторая форма приведённого неравенства Клаузиуса-Дюгема}.
 	
-\subsection{Определяющие уравнения}
-
-\subsection{Постановка задачи.}
+\subsection{Постановка задачи}
+\subsubsection{Гидродинамика}
 	Запишем математическую модель двухкомпонентной (нефть, газ) $\{O, G\}$ двухфазной (жидкость, газ) $\{l, g\}$ фильтрации флюида в пласте.
-	Уравнения баланса массы для компонент в таком случае будут иметь вид:
+	Уравнения баланса массы для компонент \eqref{mass_law_e_div} в таком случае будут иметь вид:
 \begin{align}
 	\label{eqns1}
-	\frac{\partial}{\partial{t}}\left[mS_oC_{Ol}\rho_l+mS_gC_{Og}\rho_g\right]+
-	{\rm div}\,{\left[C_{Ol}\rho_l\boldsymbol{w}_l+C_{Og}\rho_g\boldsymbol{w}_g\right]} = 0,\\
-	\frac{\partial}{\partial{t}}\left[mS_oC_{Gl}\rho_l+mS_gC_{Gg}\rho_g\right]+
-	{\rm div}\,{\left[C_{Gl}\rho_l\boldsymbol{w}_l+C_{Gg}\rho_g\boldsymbol{w}_g\right]} = 0,
+	\frac{\partial}{\partial{t}}\left[\phi S_oC_{Ol}\rho_l+\phi S_gC_{Og}\rho_g\right]+
+	{\rm div}\,\left[C_{Ol}\rho_l\boldsymbol{w}_l+C_{Og}\rho_g\boldsymbol{w}_g\right] = 0,\nonumber\\
+	\frac{\partial}{\partial{t}}\left[\phi S_oC_{Gl}\rho_l+\phi S_gC_{Gg}\rho_g\right]+
+	{\rm div}\,\left[C_{Gl}\rho_l\boldsymbol{w}_l+C_{Gg}\rho_g\boldsymbol{w}_g\right] = 0,
 \end{align}
 	где массовые доли компонентов в фазах $C_{Ol}$, $C_{Og}$, $C_{Gl}$, $C_{Gg}$ примем равными:
 \begin{align}
@@ -311,7 +310,7 @@
 	\label{states}
 	\rho_{l} = \frac{\rho_O^{STC} + \rho_G^{STC}Rs(p)}{B_l(p)}, \quad \rho_{g} = \frac{\rho_G^{STC}}{B_g(p)},
 \end{align}
-	где $B_l = B_l(p)$, $B_g = B_g(p)$  -- объёмные коэффициенты нефти и газа соответственно.
+	где $B_l = B_l(p)$, $B_g = B_g(p)$  -- объёмные коэффициенты жидкой и газовой фаз соответственно.
 	Здесь мы рассматриваем газированную жидкость, нефть в газовой фазе не содержится.
 	
 	Будем рассматривать фильтрацию по закону Дарси:
@@ -339,11 +338,92 @@
 \begin{align}
 	\label{eqns2}
 	\frac{\partial}{\partial{t}}\left(\frac{mS}{B_l}\right)&=
-	{\rm div}\,\left(\frac{kk_{rl}}{\mu_l B_l}\nabla p\right),\\
+	{\rm div}\,\left(\frac{kk_{rl}}{\mu_l B_l}\nabla p\right),\nonumber\\
 	\frac{\partial}{\partial{t}}\left(\frac{m(1-S)}{B_g}+\frac{mSRs}{B_l}\right)&=
 	{\rm div}\,\left(\frac{kk_{rg}}{\mu_g B_g}\nabla p+\frac{kk_{rl}Rs}{\mu_l B_l}\nabla p\right).
 \end{align}
 	
+	Уравнения \eqref{eqns2} представляют собой систему из двух нелинейных уравнений в частных производных 2-го порядка по $p$, 1-го по $S$. Её решение устойчиво при условии:
+\begin{equation}
+	\label{stab_cond}
+	\frac{dB_l}{dp} < B_g\frac{dRs}{dp}.
+\end{equation}
 	
+	Для системы \eqref{eqns2} поставим начальное условие в виде:
+\begin{equation}
+	\label{init_cond}
+	\left.p\right|_{t=0} = p_0, \quad \left.S\right|_{t=0} = S_0,
+\end{equation}
+	граничное условие на подошве $\Gamma_b$ и кровле $\Gamma_t$ пласта:
+\begin{equation}
+	\label{well_cond4}
+	\left.\frac{\partial p}{\partial z}\right|_{\Gamma_{b}} = 0,\quad
+	\left.\frac{\partial p}{\partial z}\right|_{\Gamma_{t}} = 0,
+\end{equation}
+	граничное условие на контуре питания $r_e$:
+\begin{equation}
+	\label{contour_cond}
+	\left.p\right|_{r=r_e} = p_0, \quad \left.S\right|_{r=r_e} = S_0.
+\end{equation}
+	
+	Поверхность скважины $\Gamma$ разобьём на две: $\Gamma = \Gamma_p \cup \Gamma_{np}$ -- перфорированную и неперфорированную.
+	На поверхности $\Gamma_{np}$ поставим условие непротекания:
+\begin{equation}
+	\label{well_cond1}
+	\left.\frac{\partial p}{\partial \boldsymbol{n}}\right|_{\Gamma_{np}} = 0,
+\end{equation}
+	где $\boldsymbol{n}$ -- единичная нормаль к поверхности.
+	На поверхности $\Gamma_p$ будем рассматривать \textit{котроль по давлению}:
+\begin{equation}
+	\label{well_cond2}
+	\left.p\right|_{\Gamma_{p}} = f(t),
+\end{equation}	
+	а также \textit{контроль по дебиту}:
+\begin{equation}
+	\label{well_cond3}
+	\left.A\frac{kk_{rl}}{\mu_l B_l}\nabla p \cdot \boldsymbol{n}\right|_{\Gamma_{p}} = Q_l(\boldsymbol{r}, t),
+\end{equation}	
+	где $A$ -- перфорированная площадь,
+	$Q_l = Q_l(\boldsymbol{r}, t)$ -- дебит жидкости.
 
-	 
+\subsubsection{Термодинамика}
+	Запишем финальное уравнение баланса энергии \eqref{energy_law4} в виде:
+\begin{align}
+	\label{energy_last}
+	c_t\frac{\partial \theta}{\partial t} &+ qL - \tilde{c\eta}\frac{\partial p}{\partial t} + 
+	\tilde{c\boldsymbol{v}}\cdot\nabla \theta + \widetilde{c\varepsilon\boldsymbol{v}}\cdot\nabla p = 
+	{\rm div}\,\left(\tilde{\lambda} \nabla \theta\right),\\
+	c_t &= \phi(S\rho_l c_l + (1-S)\rho_g c_g) + (1-\phi)\rho_{s}c_{s},\nonumber\\
+	\tilde{c\eta} &= \phi\left(S\rho_l c_l \eta_l + (1-S)\rho_g c_g \eta_g)\right),\nonumber\\
+	\tilde{c\boldsymbol{v}} &= \phi\left(S\rho_l c_l \boldsymbol{v}_l + (1-S)\rho_g c_g \boldsymbol{v}_g\right),\nonumber\\
+	\widetilde{c\varepsilon\boldsymbol{v}} &= \phi\left(S\rho_l c_o \varepsilon_l\boldsymbol{v}_o + (1-S)\rho_g c_g \varepsilon_g\boldsymbol{v}_g\right),\nonumber
+\end{align}
+\begin{align}
+	\label{energy_last1}
+	\tilde{\lambda} = \phi(S\lambda_l + (1-S)\lambda_g) + (1-\phi)\lambda_{s}\nonumber.
+\end{align}
+	Уравнение \eqref{energy_last} -- линейное уравнение в частных производных, второго порядка относительно $\theta$.
+	Однако при расчёте его коэффициенты меняются во времени от шага к шагу, т.к. они являются результатом решения 		сменанной задачи \eqref{eqns2}, \eqref{init_cond}, \eqref{well_cond4}, \eqref{well_cond1}, \eqref{well_cond2} либо задачи \eqref{eqns2}, 		\eqref{init_cond}, \eqref{well_cond4}, \eqref{well_cond1}, \eqref{well_cond3}.
+
+	Для уравнения \eqref{energy_last} будем рассматривать начальное условие вида:
+\begin{equation}
+	\label{energy_init}
+	\left. \theta \right|_{t=0} = \theta_0,
+\end{equation}
+	граничное условие на подошве $\Gamma_b$ и кровле $\Gamma_t$ пласта:
+\begin{equation}
+	\label{energy_contour3}
+	\left.\frac{\partial \theta}{\partial z}\right|_{\Gamma_{b}} = 0,\quad
+	\left.\frac{\partial \theta}{\partial z}\right|_{\Gamma_{t}} = 0,
+\end{equation}
+	граничное условие на контуре:
+\begin{equation}
+	\label{energy_contour}
+	\left. \theta \right|_{r=r_e} = \theta_0.
+\end{equation}
+	Граничное условие на неперфорированной поверхности скважины $\Gamma_{np}$:
+\begin{equation}
+	\label{energy_contour1}
+	\left. \frac{\partial\theta}{\partial \boldsymbol{n}} \right|_{\Gamma_{np}} = 0.
+\end{equation}
+	Граничное условие на перфорированной поверхности $\Gamma_p$ будет обсуждаться в Главе 2.
